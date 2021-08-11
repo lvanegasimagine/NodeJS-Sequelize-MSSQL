@@ -1,0 +1,13 @@
+###
+GET http://localhost:3000/test/list
+###
+GET http://localhost:3000/test/index
+###
+GET http://localhost:3000/test/create
+###
+GET http://localhost:3000/test/update
+###
+GET http://localhost:3000/test/get/2004
+###
+GET http://localhost:3000/test/delete/1
+###
