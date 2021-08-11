@@ -7,17 +7,6 @@ const { Op } = require("sequelize");
 
 const controller = {}
 
-controller.index = (req,res) => {
-
-    const data = {
-      name: "Jhon Smith",
-      age: 20,
-      city: 'London'
-    }
-
-    res.json(data);
-};
-
 controller.list = async (req, res) =>{
     try {
         const response = await Customers.findAll()
@@ -50,10 +39,10 @@ controller.list = async (req, res) =>{
 controller.create = async (req, res) => {
     try {
         const response = await Customers.create({
-            name: 'Luis Vanegas',
-            email: 'lvanegas1429@gmail.com',
-            address: 'Camilo Chamorro',
-            phone: '989898'
+            name: req.body.name,
+            email: req.body.email,
+            address: req.body.address,
+            phone: req.body.phone,
         }).then(function(data){
             const res = {
                 success: true,
@@ -82,16 +71,16 @@ controller.create = async (req, res) => {
 controller.update = async (req, res) => {
     try {
 
-        const idCustomer = 1;
+        const {id} = req.params;
 
         const response = await Customers.update({
-            name: 'Luis Vanegas',
-            email: 'lvanegas95@gmail.com',
-            address: 'Camilo Chamorro',
-            phone: '989898'
+            name: req.body.name,
+            email: req.body.email,
+            address: req.body.address,
+            phone: req.body.phone,
         },
         {
-            where: { id: idCustomer}
+            where: { id: id}
         }).then(function(data){
             const res = {
                 success: true,
